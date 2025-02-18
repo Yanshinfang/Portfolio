@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yen-Hsin Fang | Data Scientist</title>
+    <style>
+        :root {
+            --primary-color: #1a365d;      /* Deeper blue for primary color */
+            --secondary-color: #2a4365;    /* Dark blue for secondary color */
+            --accent-color: #f0f4f8;       /* Light gray-blue for accent */
+            --text-color: #2d3748;         /* Dark gray for text */
+            --light-text: #718096;         /* Medium gray for lighter text */
+            --highlight: #3182ce;          /* Highlight blue for links and buttons */
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .contact-info a:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+        
+        .icon {
+            width: 16px;
+            height: 16px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--highlight);
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .skill-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .skill-category {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .skill-tag {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        
+        .projects {
+            background-color: var(--accent-color);
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-img {
+            height: 200px;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-title {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .project-tech {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .project-tech span {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+        }
+        
+        .project-links {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .project-links a {
+            color: var(--highlight);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .project-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .experience {
+            background-color: white;
+        }
+        
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background-color: var(--highlight);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+            width: 50%;
+            padding: 0 40px;
+        }
+        
+        .timeline-item:nth-child(even) {
+            margin-left: auto;
+        }
+        
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--highlight);
+            top: 15px;
+        }
+        
+        .timeline-item:nth-child(odd):after {
+            right: -8px;
+        }
+        
+        .timeline-item:nth-child(even):after {
+            left: -8px;
+        }
+        
+        .timeline-content {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+        }
+        
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 10px;
+        }
+        
+        .timeline-role {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .timeline-company {
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-description ul {
+            padding-left: 20px;
+        }
+        
+        .timeline-description li {
+            margin-bottom: 8px;
+        }
+        
+        .education {
+            background-color: var(--accent-color);
+        }
+        
+        .education-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .education-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            width: 100%;
+            max-width: 400px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .education-degree {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .education-school {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .education-date {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 15px;
+        }
+        
+        .certifications {
+            padding-top: 40px;
+        }
+        
+        .certifications h3 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .cert-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cert-item {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            max-width: 400px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .cert-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cert-logo {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+        
+        .cert-details h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .cert-details p {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline:before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 10px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                margin-left: 0;
+            }
+            
+            .timeline-item:after {
+                left: 12px;
+            }
+            
+            .timeline-item:nth-child(odd):after {
+                right: auto;
+                left: 12px;
+            }
+            
+            .skill-category {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="profile-img">
+                    <img src="./pic/IMG_1903.heic" alt="Yen-Hsin Fang">
+                    <!-- Replace with your actual image: <img src="your-image-path.jpg" alt="Yen-Hsin Fang"> -->
+                </div>
+                <h1>Yen-Hsin Fang</h1>
+                <p class="tagline">Data Scientist specializing in machine learning, large language models, and data visualization</p>
+                <div class="contact-info">
+                    <a href="mailto:your-email@example.com">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/your-linkedin" target="_blank">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/your-github" target="_blank">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        GitHub
+                    </a>
+                    <a href="tel:+14153518521">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        (415) 351-8521
+                    </a>
+                    <a href="#">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        San Francisco, CA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>I'm a data scientist with 3 years of experience, specializing in machine learning to analyze large datasets and visualize trends. My expertise includes developing RAG pipelines with LangChain, implementing forecasting models, and leveraging machine learning algorithms to identify patterns in complex data. I'm passionate about transforming raw data into actionable insights that drive business decisions.</p>
+            </div>
+            
+            <div class="skill-categories">
+                <div class="skill-category">
+                    <h3>Programming & Visualization</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">NoSQL</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">PowerBI</span>
+                        <span class="skill-tag">Excel</span>
+                        <span class="skill-tag">PowerPoint</span>
+                        <span class="skill-tag">Airflow</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Machine Learning</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Regression</span>
+                        <span class="skill-tag">Classification</span>
+                        <span class="skill-tag">Unsupervised Learning</span>
+                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">Transformers</span>
+                        <span class="skill-tag">LLM</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Big Data/Database</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">PySpark</span>
+                        <span class="skill-tag">ETL Pipelines</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Hadoop</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Firestore</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Libraries and Frameworks</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Plotly</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Spacy</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Web Experimentation</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Causal Inference</span>
+                        <span class="skill-tag">A/B Testing</span>
+                        <span class="skill-tag">Hypothesis Testing</span>
+                        <span class="skill-tag">Predictive Modeling</span>
+                        <span class="skill-tag">Statistics</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Cloud/MLOps</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">AWS SageMaker</span>
+                        <span class="skill-tag">AWS EC2</span>
+                        <span class="skill-tag">AWS S3</span>
+                        <span class="skill-tag">GCP BigQuery</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">CI/CD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-img">RAG Chatbox Pipeline</div>
+                    <div class="project-content">
+                        <h3 class="project-title">RAG Pipeline for Chatbox Applications</h3>
+                        <p>Built a Retrieval-Augmented Generation pipeline using LangChain to enhance chatbox response relevance and precision. Established an automated update pipeline from Google Cloud Storage to Firestore, improving similarity search accuracy from 80% to 95%.</p>
+                        <div class="project-tech">
+                            <span>LangChain</span>
+                            <span>GCS</span>
+                            <span>Firestore</span>
+                            <span>Vector Database</span>
+                            <span>LLM</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank">
+                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                GitHub
+                            </a>
+                            <a href="#" target="_blank">
+                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">Flight Demand Forecasting</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Flight Demand Forecasting Model</h3>
+                        <p>Analyzed three years of data across 2000+ flights and 30,000+ purchase records to develop a forecasting model that generated potential $1.4 million annual revenue. Implemented an automated system with Snowflake for seasonal predictions.</p>
+                        <div class="project-tech">
+                            <span>Machine Learning</span>
+                            <span>Snowflake</span>
+                            <span>Data Analysis</span>
+                            <span>Forecasting</span>
+                            <span>Automation</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank">
+                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                GitHub
+                            </a>
+                            <a href="#" target="_blank">
+                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                Report
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">Neural Network Recommender</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Recommender System with Neural Network & Matrix Factorization</h3>
+                        <p>Used H&M's past purchase history (10 million+ records, 10GB+) to train two recommendation models. Implemented LDA and VGG16 to extract features from product images and descriptions. Recommended related products
